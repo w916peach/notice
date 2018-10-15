@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const template = function(sourceTpl,data){
+            //\n 换行符  \r 回车符
+            var tpl = sourceTpl.replace(/[\n\r]/g, '');
+            var params = {
+                "#each": "/each"
+            };
+            tpl =  tpl.replace(/\{\{([\w]+)\}\}/g, function(a, b){
+                return data[b] || a;
+            });
+            var str = '';
+            for (var key in params) {
+                if (key === '#each') {
+                    var reg = new RegExp('\{\{' + key + '\\((\\w+)\\)\}\}(.+)\{\{\\' + params[key] + '\}\}', 'g');
+                    tpl = tpl.replace(reg, function($0,$1,$2) {
+                        data[$1].forEach(item => {
+                            var html = $2.replace(/\{\{(\w+)\}\}/g, function(a, b){
+                                return item[b];
+                            })
+                            str += html; 
+                        }); 
+                        return str;
+                    });
+                }
+            }
+            return tpl;
+        };
+        const data = {
+            var1:"a",
+            var2:"b",
+            var3:[{
+                fir:"c",last:"ca"
+            },{
+                fir:"d",last:"da"
+            },{
+                fir:"e",last:"ea"
+            }]};
+            var str = template('{{var1}} of {{var2}}  are:{{#each(var3)}}{{fir}}2323{{last}}{{/each}}',data);
+            console.log(str);
+        </script>
+</body>
+</html>
