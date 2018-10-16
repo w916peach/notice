@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件</title>
+</head>
+<body>
+    <div id="box">
+        点我
+    </div>
+    <script>
+        function addEvent(dom,type,fn){
+            let timspace;
+            let delay = 100;
+            dom.addEventListener('touchstart',function(){
+                console.log('start');
+                timspace = new Date().getTime();
+            });
+
+            dom.addEventListener('touchend',function(){
+                let dis = new Date().getTime() - timspace;
+                if(dis <= delay){
+                    fn();
+                }
+            });
+        }
+        var oBox = document.getElementById('box');
+        addEvent(oBox,'tap',function(){
+            alert('tap');
+        });
+
+        
+        function tab(domCollection,type,fn){
+            for(let i = 0; i < domCollection.length; i++){
+                domCollection[i].onClick = function(ev){
+                    fn(ev,i);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

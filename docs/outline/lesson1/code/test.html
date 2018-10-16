@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=deveice-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0;padding:0;}
+        .left{
+            float:left; background:red; width:50%; height:200px;
+        }
+        .right{
+            float:right; background:blue; width:50%; height:200px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>布局视口1</h1>
+        <div id="layout"></div>
+        <h1>视觉视口</h1>
+        <div id="view"></div>
+    </div>
+    <div>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+    <script>
+        var oLayout = document.getElementById('layout');
+        var oView = document.getElementById('view');
+        var oHtml = document.getElementsByTagName('html')[0];
+        oLayout.innerHTML = oHtml.clientWidth;
+        oView.innerHTML = window.innerWidth;
+
+    </script>
+</body>
+</html>
