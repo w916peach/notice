@@ -21,7 +21,7 @@ module.exports = {
                 ['1','知识点'],
                 ['2','案例']
             ],
-            '/outline/lesson2':[
+            '/outline/lesson2/':[
                 ['1','知识点'],
                 ['2','案例']
             ]
