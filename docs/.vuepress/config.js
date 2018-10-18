@@ -8,6 +8,8 @@ module.exports = {
             {
                 text:'课程大纲',
                 items:[
+
+                    {text:'概要记录',link:'/info/1.html'},
                     {text:'pc端项目整合',link:'/outline/lesson0/1.html'},
                     {text:'移动端开发',link:'/outline/lesson1/1.html'},
                     {text:'移动项目整合',link:'/outline/lesson2/1.html'}
@@ -16,7 +18,7 @@ module.exports = {
         ],
         sidebar:{
             '/info/':[
-                ['1','哈哈']
+                ['1','概要记录']
             ],
             '/outline/lesson0/':[
                 ['1','知识点'],
