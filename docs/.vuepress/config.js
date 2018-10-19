@@ -9,7 +9,9 @@ module.exports = {
                 text:'课程大纲',
                 items:[
 
+                    
                     {text:'概要记录',link:'/info/1.html'},
+                    {text:'javaScript下',link:'/outline/lesson3/1.html'},
                     {text:'pc端项目整合',link:'/outline/lesson0/1.html'},
                     {text:'移动端开发',link:'/outline/lesson1/1.html'},
                     {text:'移动项目整合',link:'/outline/lesson2/1.html'}
@@ -29,6 +31,10 @@ module.exports = {
                 ['2','案例']
             ],
             '/outline/lesson2/':[
+                ['1','知识点'],
+                ['2','案例']
+            ],
+            '/outline/lesson3/':[
                 ['1','知识点'],
                 ['2','案例']
             ]
