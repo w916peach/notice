@@ -14,7 +14,8 @@ module.exports = {
                     {text:'javaScript下',link:'/outline/lesson3/1.html'},
                     {text:'pc端项目整合',link:'/outline/lesson0/1.html'},
                     {text:'移动端开发',link:'/outline/lesson1/1.html'},
-                    {text:'移动项目整合',link:'/outline/lesson2/1.html'}
+                    {text:'移动项目整合',link:'/outline/lesson2/1.html'},
+                    {text:'react相关',link:'/interview/react/1.html'}
                 ]
             }
         ],
@@ -37,9 +38,11 @@ module.exports = {
             '/outline/lesson3/':[
                 ['1','知识点'],
                 ['2','案例']
+            ],
+            '/interview/react/':[
+                ['1','基础知识'],
+                ['2','面试题']
             ]
-
-
         },
         sidebarDepth: 2
     },
