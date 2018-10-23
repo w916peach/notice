@@ -1,3 +1,4 @@
+
 (function(){
     // 创建BaWei构造函数
         // 返回BaWei.fn.init的实例
