@@ -1,8 +1,8 @@
 /*
  * @Author: tao 
  * @Date: 2018-10-23 15:31:07 
- * @Last Modified by: tao
- * @Last Modified time: 2018-10-23 15:37:47
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2018-10-23 22:51:48
  * @func: 核心方法，返回构造器方法
  */
 define(function(){
@@ -33,7 +33,7 @@ define(function(){
         // 遍历实例对象
         each:function(fn){
             for(var i = 0; i < this.length; i++){
-                fn(i,this[i],this);
+                fn.call(this[i],i,this[i],this);
             }
         },
         // 获取对应的dom节点
