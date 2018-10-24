@@ -2,7 +2,7 @@
  * @Author: tao 
  * @Date: 2018-10-23 15:31:07 
  * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2018-10-23 22:51:48
+ * @Last Modified time: 2018-10-24 22:44:38
  * @func: 核心方法，返回构造器方法
  */
 define(function(){
@@ -15,6 +15,13 @@ define(function(){
     // 对BaWei的原型对象进行重写
     BaWei.fn = BaWei.prototype = {
         constructor:BaWei,
+        /**
+         * [给集合中添加内容]
+         * @param {Any} [要添加的内容]
+         */
+        push:function(content){
+            Array.prototype.push.call(this,content);
+        },
         /**
          * [字符串中某个字符出现的次数]
          * @param {String} str 
@@ -57,11 +64,15 @@ define(function(){
                 this[0] = oDiv.firstElementChild || oDiv.firstChild;
             }else{
                 if(selector[0] === '#' && this.strNum(selector,'#') === 1){
-                    this[0] = context.getElementById(selector.slice(1));
+                    var dom = context.getElementById(selector.slice(1))
+                    if(dom){
+                        this[0] = dom;
+                        this.length = 1;
+                    }
                 }else{
                     var elems = context.querySelectorAll(selector);
                     for(var i = 0;i < elems.length; i++){
-                        this[i] = elems[i];
+                        this.push(elems[i]);
                     }
                 }
             }
