@@ -2,7 +2,7 @@
  * @Author: tao 
  * @Date: 2018-10-23 15:31:07 
  * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2018-10-24 22:44:38
+ * @Last Modified time: 2018-10-26 22:47:37
  * @func: 核心方法，返回构造器方法
  */
 define(function(){
@@ -46,6 +46,9 @@ define(function(){
         // 获取对应的dom节点
         get:function(index){
             return this[index];
+        },
+        eq:function(index){
+            return BaWei(this.get(index));
         }
     }
 
@@ -91,5 +94,5 @@ define(function(){
 
     // 把对象挂在window对象上
     window.bw = window.BaWei = BaWei;
-    return BaiWei;
+    return BaWei;
 });
