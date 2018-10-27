@@ -13,6 +13,7 @@ module.exports = {
                     {text:'模块',link:'/outline/lesson4/1.html'},
                     {text:'pc端项目整合',link:'/outline/lesson0/1.html'},
                     {text:'移动端开发',link:'/outline/lesson1/1.html'},
+                    {text:'服务端开发',link:'/outline/lesson5/1.html'},
                     {text:'移动项目整合',link:'/outline/lesson2/1.html'},
                     {text:'react相关',link:'/interview/react/1.html'}
                 ]
@@ -39,6 +40,10 @@ module.exports = {
                 ['2','案例']
             ],
             '/outline/lesson4/':[
+                ['1','知识点'],
+                ['2','案例']
+            ],
+            '/outline/lesson5/':[
                 ['1','知识点'],
                 ['2','案例']
             ],
