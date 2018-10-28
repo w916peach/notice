@@ -2,7 +2,7 @@
  * @Author: mikey.zhaopeng 
  * @Date: 2018-10-26 22:20:51 
  * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2018-10-26 22:56:19
+ * @Last Modified time: 2018-10-28 14:33:12
  */
 define(['core'],function(BaWei){
     /**
@@ -83,4 +83,14 @@ define(['core'],function(BaWei){
         }
         return this;
     }
-})
+    /**
+     * [删除节点] 
+     * @return {BaWei} [返回被删除的dom节点实例]
+     */
+    BaWei.fn.remove = function(){
+        this.each(function(key,value){
+            BaWei(value).parent().get(0).removeChild(value);
+        });
+        return this;
+    }
+});

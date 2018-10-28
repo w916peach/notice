@@ -2,7 +2,7 @@
  * @Author: tao 
  * @Date: 2018-10-23 15:31:07 
  * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2018-10-26 22:47:37
+ * @Last Modified time: 2018-10-28 14:29:40
  * @func: 核心方法，返回构造器方法
  */
 define(function(){
@@ -47,8 +47,17 @@ define(function(){
         get:function(index){
             return this[index];
         },
+        // 从选中的dom集合中选择对应索引的实例
         eq:function(index){
             return BaWei(this.get(index));
+        },
+        // 选择集合中所有的节点的父级节点
+        parent:function(){
+            var that = BaWei();
+            this.each(function(key,value){
+                that.push(value.parentNode);
+            });
+            return that;
         }
     }
 
@@ -56,6 +65,7 @@ define(function(){
     BaWei.fn.init = function(selector,context){
         context = context || document;
         context = context.nodeType ? context : context[0];
+        this.length = 0;
         // 没有传递选择器字符串则直接返回当前实例；
         if(!selector){
             return this
@@ -64,6 +74,7 @@ define(function(){
             if(selector[0] === '<' && selector.length >= 3 && selector[selector.length - 1] === '>'){
                 var oDiv = document.createElement('div');
                 oDiv.innerHTML = selector;
+                this.length = 1;
                 this[0] = oDiv.firstElementChild || oDiv.firstChild;
             }else{
                 if(selector[0] === '#' && this.strNum(selector,'#') === 1){
@@ -82,6 +93,7 @@ define(function(){
         }else if(selector.nodeType){
             // 传入dom节点时
             this[0] = selector;
+            this.length = 1;
         }else if(selector instanceof BaWei){
             // 传入实例对象的时候
             return selector;
