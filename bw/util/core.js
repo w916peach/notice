@@ -8,8 +8,8 @@
 define(function(){
     // 创建BaWei构造函数
     // 返回BaWei.fn.init的实例
-    var BaWei = function(selector){
-        return new BaWei.fn.init(selector);
+    var BaWei = function(selector,context){
+        return new BaWei.fn.init(selector,context);
     } 
     // BaWei.fn是BaWei的原型对象
     // 对BaWei的原型对象进行重写
