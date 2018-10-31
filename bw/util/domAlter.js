@@ -56,15 +56,13 @@ define(['core'],function(BaWei){
      * @return {BaWei} [返回BaWei实例]
      */
     BaWei.fn.append = function(dom){
-        if(dom.nodeType){
-            this.each(function(key,value){
-                value.appendChild(dom);
-            })
-        }else if(dom instanceof BaWei){
-            this.each(function(key,value){
-                value.appendChild(dom[0]);
-            })
-        }
+        dom = dom.nodeType ? dom : dom[0];
+        var cloneDom;
+        cloneDom = dom.cloneNode(true);
+        this.each(function(key,value){
+            value.appendChild(cloneDom);
+        });
+       
         return this;
     }
     /**
