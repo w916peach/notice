@@ -78,7 +78,7 @@ define(function(){
                 this[0] = oDiv.firstElementChild || oDiv.firstChild;
             }else{
                 if(selector[0] === '#' && this.strNum(selector,'#') === 1){
-                    var dom = context.getElementById(selector.slice(1))
+                    var dom = document.getElementById(selector.slice(1))
                     if(dom){
                         this[0] = dom;
                         this.length = 1;

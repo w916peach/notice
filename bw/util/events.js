@@ -6,46 +6,52 @@
  */
 define(['core'],function($){
     $.fn.on = function (type) {
-        var str, data, callback, argv = Array.prototype.slice.call(arguments,1);
-        argv.forEach((item) => {
-            typeof item == "string" ? str = item : item.toString() == "[object Object]" ? data =
-                item :
-                typeof item == "function" ? callback = item : null;
-        });
-        function run(e) {
-            if (data) {
-                e.data = data
-            }
-            if (str) {
-                if (e.target.tagName == str.toUpperCase()) {
-                    callback && callback.call(e.target, e)
-                    return;
+        if(typeof arguments[1] === 'function'){
+            this.each(function(index,item){
+                item.addEventListener(type,arguments[i],false);
+            });
+        }else if(typeof arguments[1] === 'string' && arguments.length === 3){
+            
+            //记录事件逻辑
+            var cb = arguments[2];
+            // 需要委托事件的节点
+            var eventDom = $(arguments[1],this[0]);
+            // 遍历节点，记录每个节点的事件
+            eventDom.each(function(index,item){
+                item.index = index;
+                if(!(typeof item.events === 'object')){
+                    item.events = {};
                 }
-
-            } else {
-                callback && callback.call(this, e);
+                if(!(item.events[type] instanceof Array)){
+                    item.events[type] = [];
+                }
+                item.events[type].push(cb);
+            })
+            // 委托在父元素的事件监听器
+            function rootListener(ev){
+                // 执行添加的函数
+                ev.target.events[type] && ev.target.events[type].forEach(function(item,index){
+                    item(ev,ev.target.index);
+                });
             }
-        }
-        if (Object.prototype.toString.call(this) === "[object Array]") {
-            this.each((index, item) => {
-                item.addEventListener(type, run);
-            })
-        } else {
-            throw new Error('对象不属于数组')
-        }
-    },
-    $.fn.trigger = function (type) {
-
-        if (Object.prototype.toString.call(this) === "[object Array]") {
-            this.each((index, item) => {
-                var ev = document.createEvent('Events');
-                ev.initEvent(type, true, true);
-                item.dispatchEvent(ev);
-            })
-        } else {
-            throw new Error('对象不属于数组')
+            if(!this[0].isAddRoot){
+                this[0].addEventListener(type,rootListener,false);
+                this[0].isAddRoot = true;
+            }
+            
         }
 
+    };
+    $.fn.off = function(type){
+        if(type){
+            this.each(function(index,item){
+                item.events[type] = null;
+            })
+        }else{
+            this.each(function(index,item) {
+                item.events = null;
+            })
+        }
     }
 
 });
