@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [];
+        function createElement(type,props,children){
+            let tagName = type;
+            return {
+                tagName,
+                props,
+                children
+            }
+        };
+        function domRender(tree,level=1,sort=0,presort=0){
+            if(typeof tree === 'string'){
+                return document.createTextNode(tree);
+            }
+            let {tagName,props,children} = tree;
+            let oDom = document.createElement(tagName);
+            Object.keys(props).forEach(item=>{
+                oDom.setAttribute(item,props[item]);
+            });
+            children.forEach((item,key)=>{
+                oDom.appendChild(domRender(item,level+1,key,sort));
+            });
+            arr.push([level,presort,sort,oDom]);
+            return oDom;
+        }
+        let divs = createElement('div',{id:'box'},[
+            createElement('div',{class:'box'},['标题']),
+            createElement('div',{class:'box'},[
+                createElement('span',{class:'span'},['1']),
+                createElement('span',{class:'span'},['2'])
+            ]),
+            createElement('ul',{class:'list'},[
+                createElement('li',{class:'item'},['1']),
+                createElement('li',{class:'item'},['2']),
+                createElement('li',{class:'item'},['3'])
+            ])
+        ]);
+        
+        function diff(preTree,nextTree){
+            preTree['children'][0]
+        }
+        
+    </script>
+</body>
+</html>
