@@ -9,6 +9,7 @@ module.exports = {
                 text:'课程大纲',
                 items:[
                     {text:'概要记录',link:'/info/1.html'},
+                    {text:'javaScript上',link:'/outline/lesson6/1.html'},
                     {text:'javaScript下',link:'/outline/lesson3/1.html'},
                     {text:'模块',link:'/outline/lesson4/1.html'},
                     {text:'pc端项目整合',link:'/outline/lesson0/1.html'},
@@ -22,6 +23,10 @@ module.exports = {
         sidebar:{
             '/info/':[
                 ['1','概要记录']
+            ],
+            '/outline/lesson6/':[
+                ['1','知识点'],
+                ['2','案例']
             ],
             '/outline/lesson0/':[
                 ['1','知识点'],
