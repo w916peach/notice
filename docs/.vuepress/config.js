@@ -16,6 +16,7 @@ module.exports = {
                     {text:'移动端开发',link:'/outline/lesson1/1.html'},
                     {text:'服务端开发',link:'/outline/lesson5/1.html'},
                     {text:'移动项目整合',link:'/outline/lesson2/1.html'},
+                    {text:'react',link:'/outline/lesson7/1.html'},
                     {text:'react相关',link:'/interview/react/1.html'},
                     {text:'常见问题汇总',link:'/interview/often/1.html'}
                 ]
@@ -55,6 +56,9 @@ module.exports = {
                 ['1','知识点'],
                 ['2','随堂案例'],
                 ['3','课后作业']
+            ],
+            '/outline/lesson7/':[
+                ['1','知识点']
             ],
             '/interview/react/':[
                 ['1','基础知识'],
